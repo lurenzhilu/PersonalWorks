@@ -1,0 +1,155 @@
+@charset "UTF-8";
+*{transition:all ease-in 0.5s;}
+.container{
+   padding:0;
+}
+.row{
+   margin:0;
+}
+body{
+   min-width:320px;
+   padding-top:51px;
+   background-image:url("../images/bg001.jpg"); 
+   background-size:100%;
+   background-attachment:fixed;
+   color:#fff;
+}
+/* 导航条 */
+.navbar{
+   margin-bottom:0;
+   padding:0 15px;
+}
+/* 巨幅介绍 */
+.huge-page{
+   margin:0;
+   height:100vh;
+   background:transparent;
+   text-align:center;
+}
+.huge-page h1{
+   margin-top:35vh;
+}
+.huge-page .btn{
+   display:inline-block;
+   width:100px;
+   border:1px solid #1699EC;
+   background:transparent; 
+   color:#27f;
+}
+.huge-page .btn:hover{
+   border:1px solid #fff;
+   background:#1699EC; 
+   color:#fff;
+   width:200px;
+}
+/* 服务功能详情 */
+.service{
+   width:100%;
+   min-height:100vh;
+   padding:15vh 0;
+   background-image: -webkit-linear-gradient(top,#4ECDC4 0,#19B5FE 100%);
+   background-image: -moz-linear-gradient(bottom,#4ECDC4 0,#19B5FE 100%);
+   background-image: linear-gradient(to bottom,#4ECDC4 0,#19B5FE 100%);
+   color:#fff;
+}
+.service>.row{
+   width:70%;
+   margin:0 auto;
+   text-align:center;
+}
+.service>.row>div{
+   padding:30px 0;
+   background:rgba(255,255,255,0.15);
+}
+.service>.row>div:nth-of-type(2){
+   background:rgba(255,255,255,0.35);
+}
+.service>.row>div:nth-of-type(3){
+   background:rgba(255,255,255,0.45);
+}
+.service>.row>div:nth-of-type(4){
+   background:rgba(255,255,255,0.6);
+}
+.service>.row h3>span{
+   color:#6A6EC1;
+}
+/* 产品介绍 */
+.box{
+   width:100%;
+}
+.box>.row{
+   margin:0;
+   background:rgba(0,0,0,0.7);
+   color:#fff;
+}
+.box>.row:nth-of-type(2){
+   background:rgba(255,255,255,1);
+   color:#333;
+}
+.picbox{
+   border:none;
+   border-radius:0;
+   margin:0; 
+}
+.picbox>img{
+   padding:0;
+   margin:0;
+   
+}
+.box .delepadding{
+   padding:0;
+}
+/* 产品展示 */
+.pic-contain{
+   width:100%;
+   padding:10vh 0;
+   margin:0 auto;
+   background:#ccc;
+}
+/* 联系分享 */
+.share{
+   width:100%;
+   padding:20vh 0;
+   background-image: -webkit-linear-gradient(top,#71BA51 0%,#00B16A 100%);
+   background-image: -moz-linear-gradient(bottom,#71BA51 0%,#00B16A 100%);
+   background-image: linear-gradient(to bottom,#71BA51 0%,#00B16A 100%);
+   text-align:center;
+}
+.share h5{
+   padding:5%;
+}
+/* 底部 */
+.foot{
+   padding:5vh 0;
+   margin:0;
+   width:100%;
+   background:rgba(0,0,0,0.7);
+}
+.foot form .submit:hover{
+   background:#00B16A;
+   color:#fff;
+}
+.foot .foot-info{
+   margin-left:20px;
+}
+.foot .foot-nav{
+   list-style-type:none;
+}
+.foot .foot-nav>li{
+   display:inline-block;
+}
+.foot .copyright{
+   text-align:center;
+}
+/* <=750px */
+@media screen and (max-width:750px) {
+   body{
+      background-attachment:scroll;
+      background-size:100vw 120vh;
+      background-repeat:no-repeat;
+   }
+   .foot .foot-info{
+      margin-left:0;
+   }
+
+}
