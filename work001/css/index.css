@@ -100,7 +100,6 @@ body{
 .picbox>img{
    padding:0;
    margin:0;
-   
 }
 .box .delepadding{
    padding:0;
@@ -117,6 +116,9 @@ body{
 }
 .pic-contain .caption .btn{
 	display:block;
+}
+.pic-contain img{
+   height:30vh;
 }
 /* 联系分享 */
 .share{
