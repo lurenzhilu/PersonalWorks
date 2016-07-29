@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>淘宝搜索框</title>
+	<style type="text/css">
+		*{padding:0;margin:0;}
+		a{text-decoration:none;color:#03f;}
+		a:hover{text-decoration:underline;}
+		@font-face{
+			font-family:iconfont;
+			src:url("http://g.tbcdn.cn/tb/icon-font/1.1.5/iconfont.woff") format("woff"),
+				url("http://g.tbcdn.cn/tb/icon-font/1.1.5/iconfont.eot") format("embedded-opentype"),
+				url("http://g.tbcdn.cn/tb/icon-font/1.1.5/iconfont.eot?#iefix") format("embedded-opentype"),
+				url("http://g.tbcdn.cn/tb/icon-font/1.1.5/iconfont.ttf") format("truetype"),
+				url("http://g.tbcdn.cn/tb/icon-font/1.1.5/iconfont.svg#uxiconfont") format("svg");
+		}
+		.icon-glass{
+			position:absolute;
+			top:50%;left:10px;
+			margin-top:-12px;
+			font-family:iconfont;
+			font-size:24px;
+			color:#ccc;
+		}
+		.search-container{
+			margin:20px 15px;	
+			z-index:1;
+		}
+		.left-box{
+			float:left;
+			width:95%;
+			height:60px;
+			padding:3px;
+			background-color:#f50;
+		}
+		.right-high{
+			float:right;
+			height:66px;
+			text-align:center;
+		}
+		.right-high>a{
+			display:block;
+			padding:10px;
+		}
+		.s-list{
+			float:left;
+			width:10%;
+			height:60px;
+			line-height:60px;
+			text-align:center;
+			list-style:none;
+			z-index:9;
+		}
+		.s-list>li{
+			background-color:#eee;
+			cursor:pointer;
+		}
+		.s-list>li:hover{
+			background-color:#ccc;
+		}
+		.s-form{
+			float:left;
+			width:90%;
+			background-color:#eee;
+			position:relative;
+		}
+		.input-s{
+			float:left;
+			display:block;
+			width:85%;
+			height:60px;
+			padding:0 0 0 50px;	
+			line-height:1;
+			border:none;
+			outline:none;
+			font-size:24px;
+			background-color:#fff;
+		}
+		.btn-s{
+			float:left;
+			display:block;
+			width:15%;
+			height:60px;
+			border:none;
+			font-size:24px;
+			background-color:#f50;
+			color:#fff;
+			cursor:pointer;
+		}
+		.btn-s:hover{
+			background-color:#f30; 
+		}
+		.show{
+			display:block;
+		}
+		.hide{
+			display:none;
+		}
+	</style>
+</head>
+<body>
+	<div class="search-container">
+		<div class="left-box">
+			<ul class="s-list" id="s-list">
+				<li id="tab_1">宝贝</li>
+				<li id="tab_2" class="hide">店铺</li>
+			</ul>
+			<form class="s-form">
+				<input type="search" name="search" class="input-s" />
+				<span class="icon-glass">ő</span>	
+				<button class="btn-s">搜索</button>
+			</form>
+		</div>
+		<div class="right-high">
+			<a href="##">高级<br/>搜索</a>
+		</div>
+	</div>
+<!--script-->
+<script type="text/javascript">
+	// 获取元素
+	var getId=function (id) {
+		return document.getElementById(id);
+	};
+	// 绑定事件
+	var addEvent=function (ele,ev,callback) {
+		if (ele.addEventListener) {
+			ele.addEventListener(ev,callback,false);
+		}
+		else if (ele.attachEvent) {
+			ele.attachEvent('on'+ev,callback);
+		}
+		else {
+			ele['on'+ev]=callback;
+		}
+	};
+	// 事件代理
+	var delegateEvent=function () {
+
+	};
+
+	// 宝贝、店铺切换
+	var ul_list=getId("s-list");
+	var tab_1=getId("tab_1");
+	var tab_2=getId("tab_2");
+	var html_1=tab_1.innerHTML;
+	var html_2=tab_2.innerHTML;
+	var flag=true;
+	
+	// 鼠标悬浮事件
+	addEvent(ul_list,'mouseover',function () {
+		ul_list.style.overflow="";
+		tab_1.className="show";
+		tab_2.className="show";
+	});
+	// 鼠标移除事件
+	addEvent(ul_list,'mouseout',function () {
+		ul_list.style.overflow="hidden";
+		tab_2.className="hide";
+	});
+	// 鼠标点击事件
+	addEvent(tab_1,'click',function () {
+		ul_list.style.overflow="hidden";
+	});
+	addEvent(tab_2,'click',function () {
+		if (flag) {
+			this.innerHTML=html_1;
+		    tab_1.innerHTML=html_2;
+		}
+		else {
+			this.innerHTML=html_2;
+		    tab_1.innerHTML=html_1;
+		}
+		ul_list.style.overflow="hidden";
+		flag=!flag;
+	});
+</script>
+<!--script-->
+</body>
+</html>

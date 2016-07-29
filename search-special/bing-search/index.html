@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>搜索框-Ajax应用</title>
+	<link rel="stylesheet" type="text/css" href="./css/main.css">
+</head>
+<body id="body">
+<!--mask 蒙版层-->
+<div id="mask"></div>
+	<div class="search-container">
+		<div class="logo" title="bing 必应搜索"></div>
+		<form class="input-box">
+			<input type="search" name="search" id="search-input" autocomplete="off" />
+			<input type="button" name="submit" id="submit-input" value="" />
+		</form>
+		<ul class="list-box" id="list-box" style="display:none;">
+			<li><a href="#">结果1</a></li>
+			<li><a href="#">结果2</a></li>
+		</ul>
+	</div>
+
+<!--script-->
+<script type="text/javascript" src="./js/jquery-1.12.3.min.js"></script>
+<script type="text/javascript" src="./js/util-jquery.js"></script>
+<!-- <script type="text/javascript" src="http://api.bing.com/qsonhs.aspx?q=1">//jsonp;</script> -->
+<!--script-->
+</body>
+</html>
