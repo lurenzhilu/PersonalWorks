@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
 </head>
 <body>
-<!--nav-->
+<!--nav-fixed-->
 <div id="nav_2" class="nav-fixed">
 	<div class="center-wrap">
 		<div class="nav-logo">
@@ -31,7 +31,7 @@
 </div>
 <!--main-->
 <div id="fp_meizu">
-	<!--header-2-->
+	<!--header-nav-->
 	<div class="section s-header fp-auto-height clearfix">
 		<div class="h-logo">
 			<a href="javascript:void(0)">
@@ -52,6 +52,7 @@
 			<a href="javascript:void(0)">logo-in</a>
 		</div>
 	</div>
+	<!--main-body-->
 	<div class="section s-qingnian active">
 		<div class="detail-box">
 			<h1>青年良品</h1>
@@ -117,6 +118,10 @@
 		</div>
 		<div class="img_box">
 			<img src="./images/card.jpg" alt="card" class="card" />
+		</div>
+		<div class="phone-card">
+			<img src="./images/cc-a.png" alt="cc-a" class="cc-a" />
+			<img src="./images/cc-b.png" alt="cc-b" class="cc-b" />
 		</div>
 	</div>
 	<div class="section s-1300w">
@@ -189,46 +194,14 @@
 			</div>
 		</div>
 		<div class="foot-copy">
-			<p>&copy;2015 Meizu Telecom Equipment Co., Ltd. All rights reserved. 备案号：粤ICP备13003602号-2 经营许可证编号：粤B2-20130198</p>
+			<p>&copy;2015 Meizu Telecom Equipment Co., Ltd. All rights reserved. 备案号：粤ICP备13003602号-2 经营许可证编号：粤B2-20130198<br/>Simulator: 
+			<a href="https://github.com/Yangfan2016" title="welcome to visit and review">Who am I ?(Yangfan)</a> | 2016-08-12</p>
 		</div>
 	</div>	
 </div>
-
 <!--script-->
 <script type="text/javascript" src="./js/jquery-1.12.3.min.js"></script>
 <script type="text/javascript" src="./fullPage-2.8.2/js/jquery.fullPage.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function () {
-	var $nav_2=$("#nav_2");
-	$("#fp_meizu").fullpage({
-		verticalCentered:false,
-		navigation:true,
-		navigationTooltips:[,'青年良品','多彩纤薄机身','一体化成型','5.5 英寸 1080P','64 位八核 CPU','双 4G 双卡双待','1300 万像素','3100mAh 典型容量','Android 5.1 内核',],
-		scrollingSpeed:700,
-		onLeave:function (index,nextIndex,direction) {
-			if (index==2 && nextIndex==1 && direction=='up') {
-				$nav_2.animate({
-					'top':'84px'
-				},700);
-			}
-			else if (index==1 && nextIndex==2 && direction=='down') {
-				$nav_2.animate({
-					'top':'0'
-				},420);
-			}
-			else if (index==3 && nextIndex==2 && direction=='up') {
-				$nav_2.animate({
-					'top':'0'
-				},500);
-			}
-			else {
-				$nav_2.animate({
-					'top':'-84px'
-				},500);
-			}
-		}
-	});
-});
-</script>
+<script type="text/javascript" src="./js/main.js"></script>
 </body>
 </html>
