@@ -1,0 +1,147 @@
+@charset "UTF-8";
+*{padding:0;margin:0;}
+html,body{width:100%;min-height:100%;}
+body{
+min-width:360px;
+background:#ccc;
+background:linear-gradient(120deg,#0c2,#03f) no-repeat;
+}
+.title{
+padding:10 15px;
+text-align:center;
+color:#f2f2f2;
+text-transform:capitalize;
+text-shadow:0 0 10px #eee;	
+}
+.lightBox{
+width:30px;
+margin:30px 80px 30px 0;
+padding:10px;
+border:1px solid #333;
+background:#941111;
+position:relative;
+}
+.light{
+width:30px;
+height:30px;
+margin:5px 0;
+border-radius:50%;
+border:1px solid #fff;
+box-sizing:border-box;
+text-align:center;
+color:#fff;
+font-size:16px;
+line-height:30px;
+}
+.red{
+background:#df3830;box-shadow:0 0 10px #df3830;
+}
+.yellow{
+background:#fe0;box-shadow:0 0 10px #fe0;
+}
+.green{
+background:#27ec02;box-shadow:0 0 10px #27ec02;
+}
+.black{
+background:#333;box-shadow:0 0 10px #333;
+}
+.timeTab{
+position:absolute;
+top:50%;left:110%;
+height:30px;
+margin-top:-15px;
+padding:10px 15px;
+line-height:30px;
+font-size:32px;
+border:1px solid #333;
+background:#666;
+color:#f00;
+text-shadow:0 0 10px #f00;
+}
+.dir{
+position:absolute;
+bottom:100%;
+left:0;right:0;
+text-align:center;
+background:#bbb;
+color:#666;
+}
+#switchBtn,
+#yellowBtn{
+display:block;
+width:100px;
+padding:10px 0;
+margin:10px;
+text-align:center;
+color:#fff;
+background:#0ae;
+border:1px solid #333;
+}
+#yellowBtn{background:#f50;}
+#switchBtn:hover{
+color:#0ae;
+background:#fff;
+border:1px solid #0ae;
+}
+#yellowBtn:hover{
+color:#f50;
+background:#fff;
+border:1px solid #f50;
+}
+.light-N,
+.light-S,
+.light-W,
+.light-E{
+padding:10px;
+border:1px solid #ccc;
+overflow:hidden;
+position:absolute;
+}
+.light-N{
+bottom:5%;
+left:50%;
+margin-left:-143px;
+}
+.light-S{
+top:5%;
+left:50%;
+margin-left:-143px;
+-webkit-transform:rotate(180deg);
+transform:rotate(180deg);
+}
+.light-W{
+top:50%;
+left:5%;
+margin-top:-107px;
+-webkit-transform:rotate(90deg);
+transform:rotate(90deg);
+}
+.light-E{
+top:50%;
+right:10%;
+margin-top:-107px;
+-webkit-transform:rotate(-90deg);
+transform:rotate(-90deg);
+}
+.lightBox[class*="-dir"]{
+background:#f50 !important;
+float:right;
+}
+.lightBox[class*="-left"]{
+float:left;
+}
+@media screen and (max-width:760px) {
+	.light-N,
+	.light-S,
+	.light-W,
+	.light-E{
+	position:static;
+	margin:10px;
+	-webkit-transform:rotate(0deg);
+	transform:rotate(0deg);
+	}
+	.lightBox{
+	float:left !important;
+	}
+
+}
