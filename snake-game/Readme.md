@@ -4,4 +4,5 @@
   <li>还有些许bug，欢迎review</li>
 </ol>
 <hr />
-<img src='' />
+
+<img src='../public-pictures/snake-game.PNG' alt='snake' />
