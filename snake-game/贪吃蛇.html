@@ -60,7 +60,7 @@ function init() {
     function coord() {
         ctx.beginPath();
         for (var i=0;i<31;i++) {
-	        ctx.moveTo(0,i*10);
+		ctx.moveTo(0,i*10);
 	        ctx.lineTo(300,i*10);
 	        ctx.strokeStyle="#333";
         }
@@ -163,22 +163,22 @@ function init() {
     drawApple(ax,ay);
     // 页面初始化
     function initFunc() {
-		cx=60;
+	cx=60;
         cy=240;
         fps=6;
         snake_len=(3-1);
         arrX=[];
         arrY=[];
         for (var i=0,len=snake_len;i<len;i++) {
-			arrX.push(60);
-			arrY.push(260-10*i);  // [260,250]
-		}
-		score=0;
-		count=0;
-		labGet.innerHTML=score+'分';
-		ctx.clearRect(0,0,300,300);
+		arrX.push(60);
+		arrY.push(260-10*i);  // [260,250]
+	}
+	score=0;
+	count=0;
+	labGet.innerHTML=score+'分';
+	ctx.clearRect(0,0,300,300);
     	coord();
-		drawSnake(cx,cy,snake_len);
+	drawSnake(cx,cy,snake_len);
     	drawApple(ax,ay);
     }
     // 主函数
