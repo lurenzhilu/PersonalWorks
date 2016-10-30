@@ -4,7 +4,8 @@
   <li>用的fullpage.js插件</li>
   <li>鄙人前端小白，欢迎大家评论</li>
 </ol>
-<a href="https://rawgit.com/Yangfan2016/PersonalWorks/master/fullpage-newpolo/">预览</a>
+<a href="http://polo.svw-volkswagen.com/">上海大众Polo官网原页面</a>
+<a href="https://rawgit.com/Yangfan2016/PersonalWorks/master/fullpage-newpolo/">我的页面预览</a>
 <hr />
 <img src="../public-pictures/vw001.JPG" />
 <img src="../public-pictures/vw002.JPG" />
