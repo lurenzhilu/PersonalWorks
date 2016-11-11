@@ -7,7 +7,7 @@
 
 ###This is me,welcome to view my friend!
 
-[预览]("")
+[预览]("https://rawgit.com/Yangfan2016/PersonalWorks/master/web-resume/index.html")
 
 ![pic](../public-pictures/me.PNG)
 
