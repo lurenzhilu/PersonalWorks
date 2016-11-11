@@ -5,7 +5,7 @@
 
 > #Personal Resume
 
-###This is me,welcome to view my friend!
+###This is me,welcome to view my resume,my friend!
 
 [预览](https://rawgit.com/Yangfan2016/PersonalWorks/master/web-resume/index.html)
 
