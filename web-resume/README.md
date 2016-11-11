@@ -7,5 +7,6 @@
 
 ###This is me,welcome to view my friend!
 
-[!pic]("../public-pictures/me.PNG")
+[预览]("")
+![pic]("../public-pictures/me.PNG")
 
