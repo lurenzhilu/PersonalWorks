@@ -7,5 +7,5 @@
 
 ###This is me,welcome to view my friend!
 
-[!img]()
+[!img]("../public-pictures/me.PNG")
 
