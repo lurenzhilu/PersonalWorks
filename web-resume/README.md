@@ -9,5 +9,5 @@
 
 [预览]("")
 
-![pic]("../public-pictures/me.PNG")
+![pic](../public-pictures/me.PNG)
 
