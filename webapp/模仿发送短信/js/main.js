@@ -1,8 +1,8 @@
 /**
-  * @Time: 2016-08-28
-  * @Author: Who am I ?
-  * @Theme: Baidu Voice I/O
-  * @Issues: 
+  * Time: 2016-08-28
+  * Author: Who am I ?
+  * Theme: Meizu Message App simulator
+  * Issues: 
   */
   
 function bindEvent(ele,eventType,callback) {
@@ -32,8 +32,8 @@ function getDom() {
     }
 }
 
-function setCss(dom,str) {
-    dom.style.cssText=""+str;
+function setCss(ele,str) {
+    ele.style.cssText=""+str;
 }
 // 8月28日 19:37   m月d日 h:min 
 function getTime(format) {
@@ -112,7 +112,6 @@ function stopBubble(ev) {
 function init() {
     var input=getDom("#inputtext");
     var bthSend=getDom("#send");
-    var maskSend=getDom("#sendmask");
     var parent=getDom("#overflowbox");
     var deles=getDom(".dele","all");
     var containers=getDom(".container","all");
@@ -131,26 +130,31 @@ function init() {
     bindEvent(input,'input',function () {
         var reg=/^\s+$/g;
         var bool=reg.test(this.value)?"off":"on";
-        var str=bool==="off"?"display:block;":"display:none;";
         bthSend.className=bool;
-        setCss(maskSend,str);
+        if (bool==="off") {
+            bthSend.disabled=true;
+        } else {
+            bthSend.disabled=false;
+        }
     });
     
     // 发送内容. ontouchend
     bindEvent(bthSend,'touchend',function () {
-        // 去除html敏感词 </>
-        var text=(input.value).replace(/<[^<>\d*]+>+/g,"");
-        madeMessage(parent,text,"right");
-        // 滚动到最底部
-        scrollToWhere(main,parent.offsetHeight-main.offsetHeight);
-        // 回复函数
-        callback(parent,input.value);
-        // 清空输入框
-        input.value="";
-        // 按钮禁止
-        bthSend.className="off";
-        // 打开遮照层
-        setCss(maskSend,"display:block;");
+        if (this.disabled==false) {
+            // 去除html敏感词 </>
+            var text=(input.value).replace(/<[^<>\d*]+>+/g,"");
+            madeMessage(parent,text,"right");
+            // 滚动到最底部
+            scrollToWhere(main,parent.offsetHeight-main.offsetHeight);
+            // 回复函数
+            callback(parent,input.value);
+            // 清空输入框
+            input.value="";
+            // 按钮禁止
+            bthSend.className="off";
+            bthSend.disabled=true;
+        }
+
     });
     
     // 点击按钮，删除节点
@@ -187,14 +191,14 @@ function init() {
     bindEvent(more,'touchend',function () {
         // 展开面板
         if (this.className!=="keyboard") {
-            setCss(panel,"display:block");
+            setCss(panel,"display:block;");
             setCss(this,"color:transparent;");
             this.className="keyboard";
             main.className+=" short";
             // 滚动到最底部
             scrollToWhere(main,parent.offsetHeight-main.offsetHeight+150);
         } else {
-            setCss(panel,"display:none");
+            setCss(panel,"display:none;");
             setCss(this,"color:;");
             this.className="";
             main.className=main.className.replace(" short","");
