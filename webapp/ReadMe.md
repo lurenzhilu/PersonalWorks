@@ -19,7 +19,7 @@
 1. 模仿小米计算器
 [预览]()
 
-![message](../public-pictures/message.JPG)
+![message](../public-pictures/calc.JPG)
 
 =====================================================
 
