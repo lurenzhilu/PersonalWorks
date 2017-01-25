@@ -1,7 +1,11 @@
 /**
-  * @Time: 2016-09-06
-  * @Author: Who am I ?
-  * @Theme: calculator
+  * Time: 2016-09-06
+  * Update: 2016-09-14
+  * Author: Who am I ?
+  * Theme: calculator
+  * Issues: 1. 浮点运算精度丢失问题=>toFixed(n) 四舍五入保留n位小数
+  *          2. 前导0过滤问题=> 正则表达式不熟
+  *          3. 阻止冒泡导致的副作用
   */
   
 // param:ele,eventType,callback
@@ -15,123 +19,113 @@ function bindEvent(ele,eventType,callback) {
     }
 }
 // param:str,eq
-function getDom() {
-    var str="",eq=0;
-    str=arguments[0];
-    eq=arguments[1];
-    if (arguments.length===1) {
-        return document.querySelector(str);
-    } else if (arguments.length===2) {
-        if (eq==="all") {
-            return document.querySelectorAll(str);
-        } else {
-            return document.querySelectorAll(str)[eq];
-        }
-    } else {
-        alert("格式不对或不支持querySelectorAll/querySelector");
-    }
+function getDom(str) {
+        return  document.querySelectorAll(str) || alert("不支持querySelectorAll");
 }
-// 浮点运算
-function calc(str) {
-    var n=0,
-        m=0,
-        maxLen=0;
-    var arrMatch=[];
-    var arrLen=[];
-    var res;
-
-    str.replace(/(\d*[\.]?\d+)/g,function (match,p1) {
-        arrMatch.push(p1);
-        n=p1.indexOf(".");
-        m=n===-1?0:p1.substring(n+1).length;
-        arrLen.push(m);
-        maxLen=Math.max.apply(null,arrLen);
-    });
-    try {
-        res=eval(str).toFixed(maxLen);
+// 滚动到底部
+function scrollBottom(outter,inner) {
+	outter.scrollTop=inner.offsetHeight-outter.offsetHeight+20;
+	// 还有20px的margin
+}
+// 00=>0   ???
+function delZero(html) {
+    return html.replace(/([^0]0{1,})([1-9]+)[+]?/g,"$2");
+}
+// 保留2位小数
+function calc(exp) {
+    try{
+        result=eval(exp).toFixed(2);
     } catch(er) {
-        res=er;
+        //result=er;
+        result='<span class="wrong">出错了呀！</span>';
     }
-    return res;
+    return result;
 }
 
+// main func
 function init() {
-    var operatorBox=getDom(".operatorbox",0);
-    var screen=getDom(".screen",0);
-    var screenAC=getDom(".screenbox .clear",0);
-    var screenInput=getDom(".result",0);
-    var scrollBox=getDom(".scrollbox",0);
-    var eles=getDom(".operatorbox>div","all");
-    var AC=getDom(".operatorbox .clear",0);
-    var result;
-    var expression;
-    var str;
-    var n=1;
+    var screen=getDom(".screen")[0];
+    var scrollBox=getDom(".screenbox .scrollbox")[0];
+    var input=getDom(".scrollbox .input")[0];
+    var output;
+    var operatorBox=getDom(".operatorbox")[0];
+    var options=getDom(".operatorbox>div");
+    var result="";
+    var str="";
+    var clear=getDom("#clear")[0];
+    var equal=getDom("#equal")[0];
+    var del=getDom("#del")[0];
     
-    for (var i=0,len=eles.length;i<len;i++) {
-        // ontouchstart
-        	bindEvent(eles[i],'touchstart',function (ev) {
-            ev.preventDefault();           
-            this.className+=" active";
-            var lenTouch=ev.touches.length;
-            window.document.title="touchstart"+lenTouch+"个指头";
-        });
-        // ontouchend
-        bindEvent(eles[i],'touchend',function () {
-            this.className=this.className.replace(" active","");
-            window.document.title="touchend";
-        });
-        	
-    }
-    
-    
-    bindEvent(operatorBox,'touchend',function (ev) {
-        scrollBox.appendChild(screenAC);
-        scrollBox.appendChild(screenInput);
-        screen.scrollTop=scrollBox.offsetHeight-screen.offsetHeight;
-        screenAC.style.cssText=";display:none;";
-        screenInput.style.cssText=";display:block;";
+    // 事件代理
+    bindEvent(operatorBox,"touchstart",function (ev) {
         var ev=ev?ev:window.event;
-        var target=ev.target || ev.srcElement;    
-        if (target.nodeName==="DIV") {
-        	screenInput.innerHTML+=target.innerHTML;
-        	expression=screenInput.innerHTML.replace(/×/g,"*").replace(/÷/g,"/+").replace(/=/g,"").replace(/％/g,"*0.01").replace(/del/g,"").replace(/<br>/g,"").replace(/AC|C/g,"");
-        	str=screenInput.innerHTML.replace(/del/g,"").replace(/<br>/g,"").replace(/AC|C/g,"")+"";
-        	if (target.className==="equal") {
-        			AC.innerHTML="AC";
-        		 result=calc(expression);
-        			var screenOutput=document.createElement("p");
-        			screenOutput.className="output";
-        			screenOutput.innerHTML=screenInput.innerHTML+"<br>"+result;
-        			scrollBox.appendChild(screenOutput);
-        			screenInput.innerHTML="";
-        			screen.scrollTop=scrollBox.offsetHeight-screen.offsetHeight;
-        		
-        		
-        	}
-        	if ((/\d/g).test(target.innerHTML)) {
-        	    AC.innerHTML="C";
-        	} 
-        	if (target.innerHTML==="C") {
-        		screenInput.innerHTML="";
-        		screenAC.style.cssText=";display:block;";
-        		screenInput.style.cssText=";display:none;";
-        		screen.scrollTop=scrollBox.offsetHeight-screen.offsetHeight;
-        	}
-        	if (target.innerHTML==="AC") {
-        	   screenInput.innerHTML="";
-        	            		scrollBox.innerHTML='<p class="clear"></p><p class="result" style="display:none;"></p>';
-        	}
-        	if (target.innerHTML==="del") {
-        		console.log(str);
-        		screenInput.innerHTML=str.substring(0,str.length-1);
-        		screenAC.style.cssText=screenInput.innerHTML===""?"display:block":"display:none";
-        		screenInput.style.cssText=screenInput.innerHTML===""?"display:none":"display:block";
-        	}
-        }
-
+        var target=ev.target || ev.srcElement;
+        // 触摸交互效果
+        target.className+=" active";
     });
-
+    // 事件代理
+    bindEvent(operatorBox,"touchend",function (ev) {
+        
+        var ev=ev?ev:window.event;
+        var target=ev.target || ev.srcElement;
+        // 触摸交互效果
+        target.className=target.className.replace(" active","");
+        
+        if (target.nodeName==="DIV" && target.parentNode===operatorBox) {
+            // 过滤关键字，并加入输入框中
+            if (input.innerHTML==="0") {
+                input.innerHTML="";
+            }
+            input.innerHTML+=(target.innerHTML+"").replace(/(del|AC|C)/g,"");
+            str+=(target.innerHTML+"").replace(/(del|AC|C)/g,"").replace("×","*").replace("÷","/").replace("％","%");
+            
+            if (target.className!=="clear") {
+                clear.innerHTML="C";
+            }
+            //delZero(input.innerHTML);
+        }
+        scrollBottom(screen,scrollBox);
+    });
+    // 计算结果
+    bindEvent(equal,"touchend",function () {
+        result=calc(str || 0);
+        output=document.createElement("p");
+        output.className="output";
+        output.innerHTML=input.innerHTML+"=<br/>"+result;
+        scrollBox.insertBefore(output,input);
+        input.innerHTML="0";
+        str="";
+        clear.innerHTML="AC";
+        scrollBottom(screen,scrollBox);
+    });
+    // 逐个删除输入框内容
+    bindEvent(del,"touchend",function (ev) {
+        input.innerHTML=input.innerHTML.substring(0,input.innerHTML.length-1);
+        if (input.innerHTML==="") {
+            input.innerHTML="0";
+        }
+        str=input.innerHTML;
+        // 阻止冒泡
+        ev.stopPropagation();
+        // 副作用
+        this.className=this.className.replace(" active","");
+    });
+    // 清除屏幕
+    bindEvent(clear,"touchend",function (ev) {
+        if (this.innerHTML==="C") {
+            input.innerHTML="0";
+            str="";
+        } else if (this.innerHTML==="AC") {
+            scrollBox.innerHTML='<p class="input">0</p>';
+            input=getDom(".input")[0];
+        }
+        // 阻止冒泡
+        ev.stopPropagation();
+        // 副作用
+        this.className=this.className.replace(" active","");
+    });
+    
+    alert("Action: \n"+"结果保留两位小数");
 }
 
 bindEvent(window,'load',init);

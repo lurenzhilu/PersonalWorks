@@ -1,8 +1,8 @@
 /**
-  * @Time: 2016-09-05
-  * @Author: Who am I ?
-  * @Theme: Baidu Voice I/O
-  * @Issues: 
+  * Time: 2016-09-05
+  * Author: Who am I ?
+  * Theme: Baidu Voice I/O
+  * Issues: 
   */
 
 // @param:dialogbox,dialogcontent,duration

@@ -1,8 +1,8 @@
 /**
-  * @Time: 2016-08-30
-  * @Author: Who am I ?
-  * @Theme: capture
-  * @Issues: 
+  * Time: 2016-08-30
+  * Author: Who am I ?
+  * Theme: capture
+  * Issues: 
   */
 
 // 截图插件

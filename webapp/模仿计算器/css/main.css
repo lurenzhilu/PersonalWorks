@@ -24,7 +24,7 @@ position:relative;
 .screen{
 position:absolute;
 bottom:0;
-max-height:45vh;
+max-height:45vh;   /* 45vh */
 left:0;right:0;
 text-align:right;
 font-size:2.5rem;
@@ -40,7 +40,7 @@ padding:5px 0;
 word-wrap:break-word;
 }
 .screen p.output{
-border-top:1px dashed #ccc;
+border-bottom:1px dashed #ccc;
 }
 .operatorbox{
 width:100%;
@@ -49,9 +49,9 @@ height:55%;
 .operatorbox>div{
 float:left;
 width:25%;
-height:11vh;
+height:11vh;  /* 11vh */
 text-align:center;
-line-height:11vh;
+line-height:11vh; /* 11vh */
 border-right:1px solid #d1d2d3;
 border-top:1px solid #d1d2d3;
 box-sizing:border-box;
@@ -62,8 +62,8 @@ color:#666;
 border-right:none;
 }
 .active{
-opacity:0.5;
-Alpha:opacity(50%);
+opacity:0.3;
+filter:alpha(opacity=30);
 background:rgba(0,0,0,0.12);
 }
 .operatorbox>div.clear{
@@ -76,9 +76,27 @@ position:relative;
 position:absolute;
 top:0;left:0;
 right:0;
-height:22vh;
-line-height:22vh;
+height:22vh; /* 22vh */
+line-height:22vh; /* 22vh */
 font-size:2rem;
 background:#d35937;
 color:#fff;
+}
+.wrong{color:#f20;}
+/* pc */
+@media (min-width:769px) {
+	.calculator{
+	width:480px;
+	height:800px;
+	margin:3vh auto;
+	box-shadow:0 0 10px #bbb; 
+	}
+	.operatorbox>div{
+	height:8vh;
+	line-height:8vh;
+	}
+	.operatorbox>.equalbox>.equal{
+	height:16vh;
+	line-height:16vh;
+	}
 }
