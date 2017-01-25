@@ -41,7 +41,7 @@
 =====================================================
 
 1. 腾讯视频(zeptojs)
-[预览](http://yangfan2016.usa3v.com)
+[预览](https://cdn.rawgit.com/Yangfan2016/PersonalWorks/39197626/webapp/%E6%A8%A1%E4%BB%BF%E8%85%BE%E8%AE%AF%E8%A7%86%E9%A2%91/index.html)
 
 
 
