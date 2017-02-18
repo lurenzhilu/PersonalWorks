@@ -47,7 +47,7 @@
 
 无图不真相
 
-![image](../../public-pictures/wy005.jpg)
+![image](../../public-pictures/wy005.JPG)
 
 
 > 然后呢，写页面逻辑JavaScript
@@ -61,7 +61,8 @@
 通过监听鼠标移动事件，改变进度条的长度
 3. 静音按钮，可以通过`audio.muted=true`实现
 
-#### 初始化歌单列表
+
+#### 初始化歌单列表
 
 网易云音乐获取歌单的API 
 http://music.163.com/api/playlist/detail?id=[id]
